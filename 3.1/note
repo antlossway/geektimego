@@ -1,0 +1,5 @@
+docker build -t quinnxie/myhttpserver:v1.0 .
+docker push quinnxie/myhttpserver:v1.0 .
+
+on a new server, download my docker repository
+docker run -p8080:8080 quinnxie/myhttpserver:v1.0
