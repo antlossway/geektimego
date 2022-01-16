@@ -3,3 +3,20 @@ docker push quinnxie/myhttpserver:v1.0 .
 
 on a new server, download my docker repository
 docker run -p8080:8080 quinnxie/myhttpserver:v1.0
+
+ps -ef|grep httpserver
+xqy      20869 23995  0 22:41 pts/14   00:00:00 docker run -p8080:8080 quinnxie/myhttpserver:v1.0
+root     20953 20933  0 22:41 ?        00:00:00 /bin/sh -c /httpserver
+root     20990 20953  0 22:41 ?        00:00:00 /httpserver
+root     21931  8937  0 22:43 pts/15   00:00:00 grep httpserver
+
+nsenter -t 20953 -n ip addr
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+36: eth0@if37: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default 
+    link/ether 02:42:ac:11:00:02 brd ff:ff:ff:ff:ff:ff link-netnsid 0
+    inet 172.17.0.2/16 brd 172.17.255.255 scope global eth0
+       valid_lft forever preferred_lft forever
+
